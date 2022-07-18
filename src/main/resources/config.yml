@@ -1,0 +1,9 @@
+PacketLimiter: #Global
+  enabled: true
+  check-interval: 60 #Time in ticks
+  max-rate: 200
+  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
+ClickEventExploit: #1.17.x & Below
+  enabled: true
+  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
+#Adding More Soon!
