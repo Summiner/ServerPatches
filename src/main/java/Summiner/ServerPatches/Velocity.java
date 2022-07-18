@@ -28,7 +28,7 @@ import java.util.HashMap;
 @Plugin(
         id = "serverpatches",
         name = "ServerPatches",
-        version = "0.0.1-00-Alpha",
+        version = "0.0.1-Release",
         dependencies = {@Dependency(id = "protocolize")}
 )
 public class Velocity {
