@@ -6,4 +6,7 @@ PacketLimiter: #Global
 ClickEventExploit: #1.17.x & Below
   enabled: true
   kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
+LecternExploit:
+  enabled: true
+  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
 #Adding More Soon!

@@ -8,8 +8,10 @@ import dev.simplix.protocolize.api.Protocolize;
 import dev.simplix.protocolize.api.listener.AbstractPacketListener;
 import dev.simplix.protocolize.api.listener.PacketReceiveEvent;
 import dev.simplix.protocolize.api.listener.PacketSendEvent;
+import dev.simplix.protocolize.data.inventory.InventoryType;
 import dev.simplix.protocolize.data.packets.*;
 import net.kyori.adventure.text.Component;
+import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Hash;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -20,6 +22,13 @@ public class Manager {
         public clickWindow1() {super(ClickWindow.class, Direction.UPSTREAM, 0);}
         @Override public void packetReceive(PacketReceiveEvent<ClickWindow> event) {
             InvExploit(event);
+        }
+        @Override public void packetSend(PacketSendEvent<ClickWindow> packetSendEvent) {}
+    }
+    private class clickWindow2 extends AbstractPacketListener<ClickWindow> {
+        public clickWindow2() {super(ClickWindow.class, Direction.UPSTREAM, 0);}
+        @Override public void packetReceive(PacketReceiveEvent<ClickWindow> event) {
+            LecternExploit(event);
         }
         @Override public void packetSend(PacketSendEvent<ClickWindow> packetSendEvent) {}
     }
@@ -93,9 +102,26 @@ public class Manager {
         }
         @Override public void packetSend(PacketSendEvent<UseItem> packetSendEvent) {}
     }
+    private class lecternpacket1 extends AbstractPacketListener<OpenWindow> {
+        public lecternpacket1() {super(OpenWindow.class, Direction.DOWNSTREAM, 0);}
+        @Override public void packetReceive(PacketReceiveEvent<OpenWindow> event) {
+            currentInvType.putIfAbsent(event.player().uniqueId(), null);
+            currentInvType.replace(event.player().uniqueId(), event.packet().inventoryType());
+        }
+        @Override public void packetSend(PacketSendEvent<OpenWindow> packetSendEvent) {}
+    }
+    private class lecternpacket2 extends AbstractPacketListener<CloseWindow> {
+        public lecternpacket2() {super(CloseWindow.class, Direction.UPSTREAM, 0);}
+        @Override public void packetReceive(PacketReceiveEvent<CloseWindow> event) {
+            currentInvType.putIfAbsent(event.player().uniqueId(), null);
+            currentInvType.remove(event.player().uniqueId());
+        }
+        @Override public void packetSend(PacketSendEvent<CloseWindow> packetSendEvent) {}
+    }
 
     Config config = Velocity.config;
     private final HashMap<UUID, Integer> lastSize = new HashMap<>();
+    private final HashMap<UUID, InventoryType> currentInvType = new HashMap<>();
     private TasksPerMinute PacketTimer;
 
     public Manager() {
@@ -115,6 +141,11 @@ public class Manager {
             Protocolize.listenerProvider().registerListener(new limiter6());
             Protocolize.listenerProvider().registerListener(new limiter7());
             Protocolize.listenerProvider().registerListener(new limiter8());
+        }
+        if(config.LecternExploit_enabled) {
+            Protocolize.listenerProvider().registerListener(new clickWindow2());
+            Protocolize.listenerProvider().registerListener(new lecternpacket1());
+            Protocolize.listenerProvider().registerListener(new lecternpacket2());
         }
     }
 
@@ -152,6 +183,21 @@ public class Manager {
                 for(Player plr : server.getPlayersConnected()) {
                     if(plr.getUniqueId().equals(event.player().uniqueId())) {
                         plr.disconnect(Component.text(config.ClickEventExploit_kickMessage));
+                    }
+                }
+            }
+        }
+    }
+
+    private void LecternExploit(PacketReceiveEvent<ClickWindow> event) {
+        InventoryType type = currentInvType.get(event.player().uniqueId());
+        if(type != null && type.equals(InventoryType.LECTERN)) {
+            event.cancelled(true);
+            currentInvType.remove(event.player().uniqueId());
+            for(RegisteredServer server : Velocity.server.getAllServers()) {
+                for(Player plr : server.getPlayersConnected()) {
+                    if(plr.getUniqueId().equals(event.player().uniqueId())) {
+                        plr.disconnect(Component.text(config.LecternExploit_kickMessage));
                     }
                 }
             }

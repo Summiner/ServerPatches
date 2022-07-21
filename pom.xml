@@ -6,7 +6,7 @@
 
     <groupId>Server-Patches</groupId>
     <artifactId>Server-Patches</artifactId>
-    <version>0.0.1-Release</version>
+    <version>0.0.2-Release</version>
     <packaging>jar</packaging>
 
     <name>ServerPatches</name>

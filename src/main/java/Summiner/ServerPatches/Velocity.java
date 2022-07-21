@@ -28,7 +28,7 @@ import java.util.HashMap;
 @Plugin(
         id = "serverpatches",
         name = "ServerPatches",
-        version = "0.0.1-Release",
+        version = "0.0.2-Release",
         dependencies = {@Dependency(id = "protocolize")}
 )
 public class Velocity {
@@ -61,7 +61,7 @@ public class Velocity {
         }
         Yaml yaml = new Yaml();
         HashMap<String, Object> a = yaml.load(Files.readString(path));
-        config = new Config(new Data(a.get("PacketLimiter"), a.get("ClickEventExploit")));
+        config = new Config(new Data(a.get("PacketLimiter"), a.get("ClickEventExploit"), a.get("LecternExploit")));
         new Manager();
         logMessage("Loaded Plugin (Velocity)");
     }
