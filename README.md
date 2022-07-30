@@ -13,5 +13,3 @@ A global patch for multiple ways to crash servers including exploits and other m
 
 ## In Development:
 - None (open ticket for more features!)
-
-#### This README stuff is boring... I will be done eventually.. I think
