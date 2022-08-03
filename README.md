@@ -1,6 +1,11 @@
 # ServerPatches
 A global patch for multiple ways to crash servers including exploits and other methods. Adding more features soon!
 
+## Features:
+- Fixes the lectern exploit (caused by sending inventory click packets while using a lectern) - [EXAMPLE](https://www.youtube.com/watch?v=SvdO8ZSHQdo)
+- Fixes out of bounds inventory click packets (wow so many issues with this packet!) - [EXAMPLE](https://www.youtube.com/watch?v=MIJR-nuwFi4)
+- Simple packet limiter built in (Not currently reccomended for use on velocity!)
+
 ## Requirements: 
 - Velocity: [Protocolize](https://github.com/Exceptionflug/protocolize/)
 - Spigot: [ProtocolLib](https://github.com/dmulloy2/ProtocolLib/)
