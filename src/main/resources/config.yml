@@ -1,12 +1,13 @@
 PacketLimiter: #Global
   enabled: true
   check-interval: 60 #Time in ticks
-  max-rate: 200
-  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
+  max-rate: 300
+  kick-message: "§8[§dProtection§8] §fPassed packet limit of §e${max}"
 ClickEventExploit: #1.17.x & Below
   enabled: true
-  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
+  kick-message: "§8[§dProtection§8] Internal Exception: Invalid Packet Recieved"
 LecternExploit:
   enabled: true
-  kick-message: "Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host"
-#Adding More Soon!
+  kick-message: "§8[§dProtection§8] Internal Exception: Invalid Packet Recieved"
+#SimplePhysics:
+#  enabled: true

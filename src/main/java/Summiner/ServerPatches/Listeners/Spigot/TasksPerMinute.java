@@ -6,7 +6,8 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class TasksPerMinute {
+public class
+TasksPerMinute {
 
     private final String name;
     private final HashMap<Player, Integer> execs = new HashMap<>();
