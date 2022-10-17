@@ -17,20 +17,6 @@ import java.util.UUID;
 
 public class Manager {
 
-    private class blockPlace1 extends AbstractPacketListener<BlockPlacement> {
-        public blockPlace1() {
-            super(BlockPlacement.class, Direction.UPSTREAM, 0);
-        }
-        @Override
-        public void packetReceive(PacketReceiveEvent<BlockPlacement> packetReceiveEvent) {
-            System.out.println(packetReceiveEvent.packet());
-        }
-        @Override
-        public void packetSend(PacketSendEvent<BlockPlacement> packetSendEvent) {
-
-        }
-    }
-
     private class clickWindow1 extends AbstractPacketListener<ClickWindow> {
         public clickWindow1() {super(ClickWindow.class, Direction.UPSTREAM, 0);}
         @Override public void packetReceive(PacketReceiveEvent<ClickWindow> event) {
@@ -139,7 +125,6 @@ public class Manager {
 
     public Manager() {
         PacketTimer = null;
-        Protocolize.listenerProvider().registerListener(new blockPlace1());
         if(config.ClickEventExploit_enabled) {
             Protocolize.listenerProvider().registerListener(new clickWindow1());
             Protocolize.listenerProvider().registerListener(new windowItems1());
