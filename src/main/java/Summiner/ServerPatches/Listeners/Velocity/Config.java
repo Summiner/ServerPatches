@@ -29,7 +29,7 @@ public class Config {
 
     public static String getDefault() {
         return "PacketLimiter: #Global\n" +
-                "  enabled: true\n" +
+                "  enabled: false\n" +
                 "  check-interval: 60 #Time in ticks\n" +
                 "  max-rate: 200\n" +
                 "  kick-message: \"Internal Exception: java.io.IOException: An existing connection was forcibly closed by the remote host\"\n" +
