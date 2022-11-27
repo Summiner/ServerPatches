@@ -26,8 +26,8 @@ TasksPerMinute {
     }
 
     public Integer addExecution(Player a) {// returns for ease of use
-        execs.putIfAbsent(a, 0);
-        execs.replace(a, execs.get(a)+1);
+        if(execs.containsKey(a)) execs.put(a, execs.get(a)+1);
+        else execs.put(a, 0);
         return execs.get(a);
     }
 }
