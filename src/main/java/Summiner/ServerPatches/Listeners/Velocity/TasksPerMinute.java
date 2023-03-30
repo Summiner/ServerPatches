@@ -9,26 +9,25 @@ public class TasksPerMinute {
 
     private final String name;
     private final HashMap<UUID, Integer> execs = new HashMap<>();
-    Timer timer = new Timer();
+    protected Timer timer = new Timer();
 
-    public TasksPerMinute(String a, Long b) {
-        this.name = a;
+    // i have tried my best to figure out what the hell these names were. this is why you use descriptive names!!
+    public TasksPerMinute(String name, Long seconds) {
+        this.name = name;
         TimerTask reload = new TimerTask() {@Override public void run() {execs.clear();}};
-        long c = b*1000;
-        timer.scheduleAtFixedRate(reload, c, c);
+        long MS = seconds*1000;
+        timer.scheduleAtFixedRate(reload, MS, MS);
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getExecutions(UUID a) {
-        return execs.get(a);
+    public int getExecutions(UUID uuid) {
+        return execs.getOrDefault(uuid, 0);
     }
 
-    public Integer addExecution(UUID a) {// returns for ease of use
-        execs.putIfAbsent(a, 0);
-        execs.replace(a, execs.get(a)+1);
-        return execs.get(a);
+    public int addExecution(UUID uuid) { // hehe i like lambdas
+        return execs.compute(uuid, (key, value) -> value == null ? 1 : value + 1);
     }
 }
