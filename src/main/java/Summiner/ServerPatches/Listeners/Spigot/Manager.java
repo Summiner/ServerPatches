@@ -14,7 +14,7 @@ import org.bukkit.plugin.Plugin;
 public class Manager {
 
     private final Plugin plugin = Spigot.getPlugin(Spigot.class);
-    public static final Config config = new Config(Spigot.getPlugin(Spigot.class).getConfig());
+    public static final Config config = new Config(plugin.getConfig());
     private TasksPerMinute PacketTimer;
     public static PacketType[] Packets = new PacketType[]{PacketType.Play.Client.BLOCK_DIG, PacketType.Play.Client.BLOCK_PLACE, PacketType.Play.Client.CHAT, PacketType.Play.Client.ENTITY_ACTION, PacketType.Play.Client.WINDOW_CLICK, PacketType.Play.Client.CLOSE_WINDOW, PacketType.Play.Client.B_EDIT, PacketType.Play.Client.TAB_COMPLETE, PacketType.Play.Client.USE_ENTITY, PacketType.Play.Client.USE_ITEM, PacketType.Play.Client.CLIENT_COMMAND, PacketType.Play.Client.UPDATE_SIGN, PacketType.Play.Client.HELD_ITEM_SLOT, PacketType.Play.Client.BEACON, PacketType.Play.Client.AUTO_RECIPE, PacketType.Play.Client.KEEP_ALIVE, PacketType.Play.Client.TELEPORT_ACCEPT, PacketType.Play.Client.WINDOW_CLICK, PacketType.Play.Client.CUSTOM_PAYLOAD, PacketType.Play.Client.GROUND, PacketType.Play.Client.PONG, PacketType.Play.Client.STRUCT, PacketType.Play.Client.TILE_NBT_QUERY};
 
