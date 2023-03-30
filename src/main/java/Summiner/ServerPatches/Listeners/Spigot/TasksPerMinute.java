@@ -4,30 +4,27 @@ import Summiner.ServerPatches.Spigot;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class
-TasksPerMinute {
+public class TasksPerMinute {
 
     private final String name;
-    private final HashMap<Player, Integer> execs = new HashMap<>();
+    private final ConcurrentHashMap<Player, Integer> execs = new ConcurrentHashMap<>();
 
-    public TasksPerMinute(String a, Long b) {
-        this.name = a;
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Spigot.getPlugin(Spigot.class), execs::clear, b, b);
+    public TasksPerMinute(String name, long interval) {
+        this.name = name;
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Spigot.getPlugin(Spigot.class), execs::clear, interval, interval);
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getExecutions(Player a) {
-        return execs.get(a);
+    public int getExecutions(Player player) {
+        return execs.getOrDefault(player, 0);
     }
 
-    public Integer addExecution(Player a) {// returns for ease of use
-        if(execs.containsKey(a)) execs.put(a, execs.get(a)+1);
-        else execs.put(a, 0);
-        return execs.get(a);
+    public int addExecution(Player player) {
+        return execs.compute(player, (key, value) -> value == null ? 1 : value + 1);
     }
 }
