@@ -16,9 +16,10 @@ public class InvalidPacket extends PlayerEvent {
     }
 
     public String getReason() {
-        return this.reason;
+        return reason;
     }
 
+    @Override
     public @NotNull HandlerList getHandlers() {
         return handlers;
     }
