@@ -38,6 +38,9 @@ public class Manager {
                         if(config.Lectern_enabled) {
                             LecternExploit(event);
                         }
+                        if(config.Swap_enabled) {
+                            ClickSwapExploit(event);
+                        }
                     }
                     if(config.Packet_enabled) {
                         PacketEvent(event);
@@ -45,6 +48,14 @@ public class Manager {
                 }
             });
         });
+    }
+
+    public void ClickSwapExploit(PacketEvent event) {
+        PacketContainer packet = event.getPacket();
+        int button = packet.getIntegers().read(3);
+        if(button>=0&&button<=40) return;
+        event.setCancelled(true);
+        kickFromAsync(event.getPlayer(), config.Swap_kickMessage);
     }
 
     public void InvExploit(PacketEvent event) {

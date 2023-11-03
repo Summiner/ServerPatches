@@ -13,6 +13,8 @@ public class Config {
     public final Boolean Lectern_enabled;
     public final String Lectern_kickMessage;
     public final Boolean SimplePhysics_enabled;
+    public final String Swap_kickMessage;
+    public final Boolean Swap_enabled;
 
     public Config(final FileConfiguration config) {
         this.Packet_enabled = config.getBoolean("PacketLimiter.enabled");
@@ -24,5 +26,7 @@ public class Config {
         this.Lectern_enabled = config.getBoolean("LecternExploit.enabled");
         this.Lectern_kickMessage = config.getString("LecternExploit.kick-message");
         this.SimplePhysics_enabled = config.getBoolean("SimplePhysics.enabled");
+        this.Swap_kickMessage = config.getString("ClickSwapExploit.kick-message");
+        this.Swap_enabled = config.getBoolean("ClickSwapExploit.enabled");
     }
 }

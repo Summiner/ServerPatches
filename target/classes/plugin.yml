@@ -1,0 +1,6 @@
+name: ServerPatches
+api-version: 1.17
+main: Summiner.ServerPatches.Spigot
+version: '0.0.7'
+authors: [Summiner,Pyr]
+depend: [ProtocolLib]
