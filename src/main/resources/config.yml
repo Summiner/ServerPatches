@@ -1,16 +1,19 @@
+Messages:
+  no_permission: "&cYou do not have permission to run this command."
+  config_reloaded: "&aSuccessfully reloaded the config file"
 PacketLimiter: #Global
-  enabled: true
+  enabled: false
   check-interval: 20 #Time in ticks
   max-rate: 300
   kick-message: "§8[§dProtection§8] §fPassed packet limit of §e${max}"
 ClickEventExploit: #1.17.x & Below
   enabled: false
   kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
-ClickSwapExploit: #?.? - 1.20.2
-  enabled: true
-  kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
 LecternExploit:
   enabled: false
+  kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
+ClickSwapExploit: #?.? - 1.20.2
+  enabled: true
   kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
 #SimplePhysics:
 #  enabled: true

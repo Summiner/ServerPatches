@@ -1,6 +1,10 @@
 name: ServerPatches
 api-version: 1.17
-main: Summiner.ServerPatches.Spigot
+main: Summiner.ServerPatches.Main
 version: '${project.version}'
-authors: [Summiner,Pyr]
+authors: [Summiner]
 depend: [ProtocolLib]
+commands:
+  spatches:
+    description: Adds the ability to reload ServerPatches config options, maybe more in the future
+    usage: /spatches reload

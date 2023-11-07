@@ -8,7 +8,6 @@ This project simply fixes crashes and other important exploits for minecraft tha
 - Simple packet limiter built in
 
 ## Requirements: 
-- Velocity: [Protocolize](https://github.com/Exceptionflug/protocolize/)
 - Spigot: [ProtocolLib](https://github.com/dmulloy2/ProtocolLib/)
   
 ## Credits:
@@ -18,6 +17,3 @@ This project simply fixes crashes and other important exploits for minecraft tha
 ## Notes:
 - If you know of any other exploits please open a [new issue](https://github.com/summiner/ServerPatches/issues/new) and give detail about the exploit
 - In the provided examples under Features we do not directly or indirectly endorse the people who have made the videos, they are simply to demonstrate the exploit
-
-## In Development:
-- None (open ticket for more features!)

@@ -1,6 +1,6 @@
-package Summiner.ServerPatches.Listeners.Spigot;
+package Summiner.ServerPatches.Utils;
 
-import Summiner.ServerPatches.Spigot;
+import Summiner.ServerPatches.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -14,7 +14,7 @@ TasksPerMinute {
 
     public TasksPerMinute(String a, Long b) {
         this.name = a;
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Spigot.getPlugin(Spigot.class), execs::clear, b, b);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(Main.class), execs::clear, b, b);
     }
 
     public String getName() {
