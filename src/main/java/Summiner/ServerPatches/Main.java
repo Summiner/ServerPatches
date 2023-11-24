@@ -25,4 +25,8 @@ public class Main extends JavaPlugin {
         logMessage("Loaded Plugin (Paper)");
     }
 
+    @Override
+    public void onDisable() {
+        manager.unload();
+    }
 }
