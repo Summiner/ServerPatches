@@ -72,7 +72,7 @@ public class Manager {
                     public void onPacketReceiving(PacketEvent event) {
                         if(event.getPlayer()==null) return;
                         int max = Main.config.getInt("PacketLimiter.max-rate");
-                        if(PacketTimer.addExecution(event.getPlayer()) >= max) {
+                        if(PacketTimer.addExecution(event.getPlayer().getUniqueId()) >= max) {
                             event.setCancelled(true);
                             invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("PacketLimiter.kick-message").replaceAll("\\$\\{max}", String.valueOf(max)));
                         }
