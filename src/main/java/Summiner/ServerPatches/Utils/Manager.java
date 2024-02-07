@@ -89,7 +89,16 @@ public class Manager {
                     public void onPacketReceiving(PacketEvent event) {
                         if(event.getPlayer()==null) return;
                         String s = event.getPacket().getStrings().read(0);
-                        if(s.contains("@e[nbt={")&&StringUtils.countMatches(s, "[")>10) {
+                        boolean pass = true;
+                        if(s.contains("[nbt={")) {
+                            if(StringUtils.countMatches(s, "[")>10||StringUtils.countMatches(s, "{")>25) {
+                                pass = false;
+                            }
+                        }
+                        if(s.length()>256) {
+                            pass = false;
+                        }
+                        if(!pass) {
                             event.setCancelled(true);
                             invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("DataCommandFilter.kick-message"));
                         }
