@@ -5,6 +5,7 @@ import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.*;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.InventoryView;
@@ -79,6 +80,18 @@ public class Manager {
                         if(PacketTimer.addExecution(event.getPlayer().getUniqueId()) >= max) {
                             event.setCancelled(true);
                             invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("PacketLimiter.kick-message").replaceAll("\\$\\{max}", String.valueOf(max)));
+                        }
+                    }
+                });
+            }
+            if(Main.config.getBoolean("DataCommandFilter.enabled")) {
+                listeners.put("datasuggestion", new PacketAdapter(plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.TAB_COMPLETE) {
+                    public void onPacketReceiving(PacketEvent event) {
+                        if(event.getPlayer()==null) return;
+                        String s = event.getPacket().getStrings().read(0);
+                        if(s.contains("@e[nbt={")&&StringUtils.countMatches(s, "[")>10) {
+                            event.setCancelled(true);
+                            invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("DataCommandFilter.kick-message"));
                         }
                     }
                 });

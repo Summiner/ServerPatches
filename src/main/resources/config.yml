@@ -15,5 +15,9 @@ LecternExploit:
 ClickSwapExploit: #?.? - 1.20.2
   enabled: true
   kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
+DataCommandFilter: #Experimental, may cause issue swhen using /data and /tell commands
+  enabled: true
+  kick-message: "§8[§dProtection§8] §fInternal Exception: Invalid Packet Recieved"
+
 #SimplePhysics:
 #  enabled: true

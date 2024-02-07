@@ -5,11 +5,12 @@ import Summiner.ServerPatches.Utils.Manager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Logger;
+
 public class Main extends JavaPlugin {
 
     public static FileConfiguration config;
     public static Manager manager;
-
 
     public static void logMessage(String msg) {
         Main.getPlugin(Main.class).getLogger().info(msg);
