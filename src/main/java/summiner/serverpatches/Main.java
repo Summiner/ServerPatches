@@ -1,11 +1,10 @@
-package Summiner.ServerPatches;
+package summiner.serverpatches;
 
-import Summiner.ServerPatches.Utils.Command;
-import Summiner.ServerPatches.Utils.Manager;
+import org.bstats.bukkit.Metrics;
+import summiner.serverpatches.Utils.Command;
+import summiner.serverpatches.Utils.Manager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.logging.Logger;
 
 public class Main extends JavaPlugin {
 
@@ -23,7 +22,8 @@ public class Main extends JavaPlugin {
         manager = new Manager();
         manager.reload();
         this.getCommand("spatches").setExecutor(new Command());
-        logMessage("Loaded Plugin (Paper)");
+        Metrics metrics = new Metrics(this, 20975);
+        logMessage("Loaded Plugin (Spigot)");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package Summiner.ServerPatches.Utils;
+package summiner.serverpatches.Utils;
 
 
 import net.md_5.bungee.api.ChatColor;

@@ -1,6 +1,6 @@
-package Summiner.ServerPatches.Utils;
+package summiner.serverpatches.Utils;
 
-import Summiner.ServerPatches.Main;
+import summiner.serverpatches.Main;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
@@ -90,8 +90,8 @@ public class Manager {
                         if(event.getPlayer()==null) return;
                         String s = event.getPacket().getStrings().read(0);
                         boolean pass = true;
-                        if(s.contains("[nbt={")) {
-                            if(StringUtils.countMatches(s, "[")>10||StringUtils.countMatches(s, "{")>25) {
+                        if(s.contains("nbt")) {
+                            if(StringUtils.countMatches(s, "[")>15||StringUtils.countMatches(s, "{")>25) {
                                 pass = false;
                             }
                         }

@@ -1,12 +1,9 @@
-package Summiner.ServerPatches.Utils;
+package summiner.serverpatches.Utils;
 
-import Summiner.ServerPatches.Main;
+import summiner.serverpatches.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.NotNull;
 
 public class InvalidPacket {
 

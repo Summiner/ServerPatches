@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        
+        {
+            "name": "Server-Patches [install]",
+            "type": "maven",
+            "workingDir": "/home/jamie/fleet/ServerPatches",
+            "tasks": ["install"]
+        }
+    ]
+}

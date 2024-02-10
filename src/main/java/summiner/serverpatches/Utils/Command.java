@@ -1,6 +1,6 @@
-package Summiner.ServerPatches.Utils;
+package summiner.serverpatches.Utils;
 
-import Summiner.ServerPatches.Main;
+import summiner.serverpatches.Main;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
@@ -14,7 +14,7 @@ public class Command implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String s, @NotNull String[] strings) {
         if(!sender.hasPermission("*")) {
-            sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Messages.no_permission")));
+            sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Misc.no_permission")));
             return true;
         }
         if(!strings[0].equalsIgnoreCase("reload")) {
@@ -24,7 +24,7 @@ public class Command implements CommandExecutor {
         plugin.reloadConfig();
         Main.config = plugin.getConfig();
         Main.manager.reload();
-        sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Messages.config_reloaded")));
+        sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Misc.config_reloaded")));
         return true;
     }
 

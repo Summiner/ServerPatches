@@ -1,6 +1,6 @@
-package Summiner.ServerPatches.Utils;
+package summiner.serverpatches.Utils;
 
-import Summiner.ServerPatches.Main;
+import summiner.serverpatches.Main;
 import org.bukkit.Bukkit;
 
 import java.util.HashMap;
