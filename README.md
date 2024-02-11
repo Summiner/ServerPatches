@@ -9,7 +9,7 @@ This project simply fixes crashes and other important exploits for minecraft tha
 - Simple packet limiter built in
 
 ## Requirements: 
-- Spigot: [ProtocolLib](https://github.com/dmulloy2/ProtocolLib/)
+- None :3
   
 ## Credits:
 - [Pyr](https://github.com/Pyrbu) - Initial patch for the inventory click exploit
