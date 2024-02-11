@@ -1,33 +1,28 @@
 package summiner.serverpatches.utils;
 
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.event.PacketListenerCommon;
+import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import summiner.serverpatches.Main;
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
-import com.comphenix.protocol.events.*;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.InventoryView;
 import org.bukkit.plugin.Plugin;
+import summiner.serverpatches.listeners.*;
 
 import java.util.HashMap;
 
 public class Manager {
 
     private final Plugin plugin = Main.getPlugin(Main.class);
-    private TimedExecutions PacketTimer;
-    public static PacketType[] Packets = new PacketType[]{PacketType.Play.Client.BLOCK_DIG, PacketType.Play.Client.BLOCK_PLACE, PacketType.Play.Client.CHAT, PacketType.Play.Client.ENTITY_ACTION, PacketType.Play.Client.WINDOW_CLICK, PacketType.Play.Client.CLOSE_WINDOW, PacketType.Play.Client.B_EDIT, PacketType.Play.Client.TAB_COMPLETE, PacketType.Play.Client.USE_ENTITY, PacketType.Play.Client.USE_ITEM, PacketType.Play.Client.CLIENT_COMMAND, PacketType.Play.Client.UPDATE_SIGN, PacketType.Play.Client.HELD_ITEM_SLOT, PacketType.Play.Client.BEACON, PacketType.Play.Client.AUTO_RECIPE, PacketType.Play.Client.KEEP_ALIVE, PacketType.Play.Client.TELEPORT_ACCEPT, PacketType.Play.Client.WINDOW_CLICK, PacketType.Play.Client.CUSTOM_PAYLOAD, PacketType.Play.Client.GROUND, PacketType.Play.Client.PONG, PacketType.Play.Client.STRUCT, PacketType.Play.Client.TILE_NBT_QUERY};
-    private final InvalidPacket invalidPacket = new InvalidPacket();
-    private final HashMap<String, PacketListener> listeners = new HashMap<>();
-    private final ProtocolManager protocolManager;
+    private final HashMap<String, PacketListenerCommon> listeners = new HashMap<>();
 
     public Manager() {
-        protocolManager = ProtocolLibrary.getProtocolManager();
+        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(Main.getPlugin(Main.class)));
+        PacketEvents.getAPI().getSettings().reEncodeByDefault(false).checkForUpdates(true).bStats(true);
+        PacketEvents.getAPI().load();
     }
 
     public void unload() {
-        listeners.forEach((key,value) -> protocolManager.removePacketListener(value));
+        listeners.forEach((key,value) -> PacketEvents.getAPI().getEventManager().unregisterListener(value));
         listeners.clear();
     }
 
@@ -35,77 +30,21 @@ public class Manager {
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             unload();
             if(Main.config.getBoolean("ClickEventExploit.enabled")) {
-                listeners.put("exploits_crash_slot", new PacketAdapter(plugin, ListenerPriority.NORMAL, PacketType.Play.Client.WINDOW_CLICK) {
-                    public void onPacketReceiving(PacketEvent event) {
-                        PacketContainer packet = event.getPacket();
-                        int rawSlot = packet.getIntegers().read(2);
-                        if (rawSlot == -999 || rawSlot == -1)
-                            return;
-                        InventoryView view = event.getPlayer().getOpenInventory();
-                        if (rawSlot < 0 || rawSlot >= view.countSlots()) {
-                            event.setCancelled(true);
-                            invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("ClickEventExploit.kick-message"));
-                        }
-                    }
-                });
+                listeners.put("exploits_crash_slot", new ClickCrashListener());
             }
             if(Main.config.getBoolean("LecternExploit.enabled")) {
-                listeners.put("exploits_crash_lectern", new PacketAdapter(plugin, ListenerPriority.NORMAL, PacketType.Play.Client.WINDOW_CLICK) {
-                    public void onPacketReceiving(PacketEvent event) {
-                        if(event.getPlayer().getOpenInventory().getType() == InventoryType.LECTERN) {
-                            event.setCancelled(true);
-                            invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("LecternExploit.kick-message"));
-                        }
-                    }
-                });
+                listeners.put("exploits_crash_lectern", new LecternCrashListener());
             }
             if(Main.config.getBoolean("ClickSwapExploit.enabled")) {
-                listeners.put("exploits_crash_swap", new PacketAdapter(plugin, ListenerPriority.NORMAL, PacketType.Play.Client.WINDOW_CLICK) {
-                    public void onPacketReceiving(PacketEvent event) {
-                        PacketContainer packet = event.getPacket();
-                        int button = packet.getIntegers().read(3);
-                        if(button>=0&&button<=40) return;
-                        event.setCancelled(true);
-                        invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("ClickSwapExploit.kick-message"));
-                    }
-                });
-            }
-            if(Main.config.getBoolean("PacketLimiter.enabled")) {
-                PacketTimer = null;
-                PacketTimer = new TimedExecutions(Main.config.getLong("PacketLimiter.check-interval"));
-                listeners.put("rate_limit", new PacketAdapter(plugin, ListenerPriority.NORMAL, Packets) {
-                    public void onPacketReceiving(PacketEvent event) {
-                        if(event.getPlayer()==null) return;
-                        int max = Main.config.getInt("PacketLimiter.max-rate");
-                        if(PacketTimer.addExecution(event.getPlayer().getUniqueId()) >= max) {
-                            event.setCancelled(true);
-                            invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("PacketLimiter.kick-message").replaceAll("\\$\\{max}", String.valueOf(max)));
-                        }
-                    }
-                });
+                listeners.put("exploits_crash_swap", new SwapCrashListener());
             }
             if(Main.config.getBoolean("DataCommandFilter.enabled")) {
-                listeners.put("datasuggestion", new PacketAdapter(plugin, ListenerPriority.HIGHEST, PacketType.Play.Client.TAB_COMPLETE) {
-                    public void onPacketReceiving(PacketEvent event) {
-                        if(event.getPlayer()==null) return;
-                        String s = event.getPacket().getStrings().read(0);
-                        boolean pass = true;
-                        if(s.contains("nbt")) {
-                            if(StringUtils.countMatches(s, "[")>15||StringUtils.countMatches(s, "{")>25) {
-                                pass = false;
-                            }
-                        }
-                        if(s.length()>256) {
-                            pass = false;
-                        }
-                        if(!pass) {
-                            event.setCancelled(true);
-                            invalidPacket.kickFromAsync(event.getPlayer(), Main.config.getString("DataCommandFilter.kick-message"));
-                        }
-                    }
-                });
+                listeners.put("exploits_crash_datacmd", new DatacommandCrashListener());
             }
-            listeners.forEach((key,value) -> protocolManager.addPacketListener(value));
+            if(Main.config.getBoolean("PacketLimiter.enabled")) {
+                listeners.put("rate_limit", new PacketLimiterListener());
+            }
+            listeners.forEach((key,value) -> PacketEvents.getAPI().getEventManager().registerListener(value));
         });
     }
 }

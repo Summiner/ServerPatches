@@ -4,14 +4,14 @@ Misc:
   config_reloaded: "&aSuccessfully reloaded the config file"
 PacketLimiter: # Global
   enabled: false
-  check-interval: 20 # Time in ticks
-  max-rate: 300 # Time in ticks
-  kick-message: "§8[§dServerPatches§8] §fPassed packet limit of §e${max}"
+  check-interval: 15 # Time in ticks
+  max-rate: 350 # Time in ticks
+  kick-message: "§8[§dServerPatches§8] §fPassed packet limit"
 ClickEventExploit: #1.17.x & Below
-  enabled: false
+  enabled: true
   kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
-LecternExploit:
-  enabled: false
+LecternExploit: #1.18.2 & Below
+  enabled: true
   kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
 ClickSwapExploit: #?.? - 1.20.2
   enabled: true

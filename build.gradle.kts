@@ -13,24 +13,28 @@ repositories {
     }
 
     maven {
-        url = uri("https://repo.dmulloy2.net/repository/public/")
+        url = uri("https://repo.maven.apache.org/maven2/")
     }
 
     maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
+        url = uri("https://repo.codemc.io/repository/maven-releases/")
     }
 }
 
 dependencies {
     implementation("org.bstats:bstats-bukkit:3.0.2")
+    implementation("com.github.retrooper.packetevents:spigot:2.2.0")
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
-    compileOnly("com.comphenix.protocol:ProtocolLib:4.7.0")
 }
 
 tasks {
     processResources {
         inputs.property("version", project.version)
         filesMatching("plugin.yml") {
+            expand(getProperties())
+            expand(mutableMapOf("version" to project.version))
+        }
+        filesMatching("Velocity.java") {
             expand(getProperties())
             expand(mutableMapOf("version" to project.version))
         }
@@ -41,6 +45,8 @@ tasks {
         archiveBaseName.set("Server-Patches")
         mergeServiceFiles()
         relocate("org.bstats", "summiner.serverpatches.bstats")
+        relocate("com.github.retrooper", "summiner.serverpatches.retrooper.com")
+        relocate("io.github.retrooper", "summiner.serverpatches.retrooper.io")
         minimize{
             exclude(dependency("com.comphenix.protocol:.*"))
         }
@@ -48,7 +54,7 @@ tasks {
 }
 
 group = "Server-Patches"
-version = "0.0.12"
+version = "1.0"
 description = "ServerPatches"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
