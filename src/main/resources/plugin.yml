@@ -1,7 +1,7 @@
 name: ServerPatches
 api-version: 1.17
 main: summiner.serverpatches.Main
-version: '${project.version}'
+version: '${version}'
 authors: [Summiner]
 depend: [ProtocolLib]
 commands:

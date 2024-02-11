@@ -1,4 +1,4 @@
-package summiner.serverpatches.Utils;
+package summiner.serverpatches.utils;
 
 import summiner.serverpatches.Main;
 import com.comphenix.protocol.PacketType;
