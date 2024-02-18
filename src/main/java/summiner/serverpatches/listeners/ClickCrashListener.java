@@ -9,6 +9,8 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientCl
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import summiner.serverpatches.Main;
+import summiner.serverpatches.api.CrashEvent;
+import summiner.serverpatches.api.CrashType;
 import summiner.serverpatches.utils.InvalidPacket;
 
 public class ClickCrashListener extends SimplePacketListenerAbstract {
@@ -32,6 +34,7 @@ public class ClickCrashListener extends SimplePacketListenerAbstract {
             if(slot < 0 || slot >= player.getOpenInventory().countSlots()) {
                 event.setCancelled(true);
                 InvalidPacket.kickFromAsync(player, Main.config.getString("ClickEventExploit.kick-message"));
+                Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.CLICK_CRASH));
             }
         }
     }

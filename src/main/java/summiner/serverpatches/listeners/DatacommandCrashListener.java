@@ -10,6 +10,8 @@ import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import summiner.serverpatches.Main;
+import summiner.serverpatches.api.CrashEvent;
+import summiner.serverpatches.api.CrashType;
 import summiner.serverpatches.utils.InvalidPacket;
 
 public class DatacommandCrashListener extends SimplePacketListenerAbstract {
@@ -41,6 +43,7 @@ public class DatacommandCrashListener extends SimplePacketListenerAbstract {
             if(!pass) {
                 event.setCancelled(true);
                 InvalidPacket.kickFromAsync(player, Main.config.getString("DataCommandFilter.kick-message"));
+                Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.DATA_COMMAND_CRASH));
             }
         }
     }

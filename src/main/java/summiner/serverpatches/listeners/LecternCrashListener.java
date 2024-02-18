@@ -9,6 +9,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import summiner.serverpatches.Main;
+import summiner.serverpatches.api.CrashEvent;
+import summiner.serverpatches.api.CrashType;
 import summiner.serverpatches.utils.InvalidPacket;
 
 public class LecternCrashListener extends SimplePacketListenerAbstract {
@@ -29,6 +31,7 @@ public class LecternCrashListener extends SimplePacketListenerAbstract {
             if(player.getOpenInventory().getType() == InventoryType.LECTERN) {
                 event.setCancelled(true);
                 InvalidPacket.kickFromAsync(player, Main.config.getString("LecternExploit.kick-message"));
+                Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.LECTERN_CRASH));
             }
         }
     }

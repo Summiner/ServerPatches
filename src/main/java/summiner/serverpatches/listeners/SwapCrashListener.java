@@ -9,6 +9,8 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientCl
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import summiner.serverpatches.Main;
+import summiner.serverpatches.api.CrashEvent;
+import summiner.serverpatches.api.CrashType;
 import summiner.serverpatches.utils.InvalidPacket;
 
 public class SwapCrashListener extends SimplePacketListenerAbstract {
@@ -30,6 +32,7 @@ public class SwapCrashListener extends SimplePacketListenerAbstract {
             if(button<0||button>40) {
                 event.setCancelled(true);
                 InvalidPacket.kickFromAsync(player, Main.config.getString("ClickSwapExploit.kick-message"));
+                Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.SWAP_CRASH));
             }
         }
     }

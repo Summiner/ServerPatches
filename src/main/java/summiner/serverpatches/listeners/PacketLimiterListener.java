@@ -7,6 +7,8 @@ import com.github.retrooper.packetevents.protocol.player.User;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import summiner.serverpatches.Main;
+import summiner.serverpatches.api.CrashEvent;
+import summiner.serverpatches.api.CrashType;
 import summiner.serverpatches.utils.InvalidPacket;
 import summiner.serverpatches.utils.TimedExecutions;
 
@@ -29,6 +31,7 @@ public class PacketLimiterListener extends SimplePacketListenerAbstract {
         if(packetTimer.addExecution(user.getUUID()) >= max) {
             event.setCancelled(true);
             InvalidPacket.kickFromAsync(player, Main.config.getString("PacketLimiter.kick-message"));
+            Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.PACKET_LIMITER));
         }
     }
 
