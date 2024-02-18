@@ -21,9 +21,18 @@ repositories {
     }
 }
 
+configurations {
+    named("shadow") {
+        extendsFrom(configurations.getByName("implementation"))
+    }
+}
+
+
 dependencies {
-    implementation("org.bstats:bstats-bukkit:3.0.2")
-    implementation("com.github.retrooper.packetevents:spigot:2.2.0")
+    shadow("org.bstats:bstats-bukkit:3.0.2")
+    shadow("com.github.retrooper.packetevents:spigot:2.2.0") {
+        exclude(group = "net.kyori")
+    }
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
 }
 
@@ -41,20 +50,20 @@ tasks {
     }
     
     named<ShadowJar>("shadowJar") {
-        
+        configurations = listOf(project.configurations.getByName("shadow"))
         archiveBaseName.set("Server-Patches")
         mergeServiceFiles()
         relocate("org.bstats", "summiner.serverpatches.bstats")
         relocate("com.github.retrooper", "summiner.serverpatches.retrooper.com")
         relocate("io.github.retrooper", "summiner.serverpatches.retrooper.io")
-        minimize{
-            exclude(dependency("com.comphenix.protocol:.*"))
+        dependencies {
+            exclude("net.kyori")
         }
     }
 }
 
 group = "Server-Patches"
-version = "1.0.1-HOTFIX"
+version = "1.0.2-HOTFIX"
 description = "ServerPatches"
 java.sourceCompatibility = JavaVersion.VERSION_17
 

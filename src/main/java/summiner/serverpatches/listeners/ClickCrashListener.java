@@ -29,7 +29,7 @@ public class ClickCrashListener extends SimplePacketListenerAbstract {
             WrapperPlayClientClickWindow clickWindow = new WrapperPlayClientClickWindow(event);
             int slot = clickWindow.getSlot();
             if (slot == -999 || slot == -1) return;
-            if(slot < 0 || slot >= player.getInventory().getSize()) {
+            if(slot < 0 || slot >= player.getOpenInventory().countSlots()) {
                 event.setCancelled(true);
                 InvalidPacket.kickFromAsync(player, Main.config.getString("ClickEventExploit.kick-message"));
             }
