@@ -3,7 +3,6 @@ api-version: 1.17
 main: summiner.serverpatches.Main
 version: '${version}'
 authors: [Summiner]
-depend: [ProtocolLib]
 commands:
   spatches:
     description: Adds the ability to reload ServerPatches config options, maybe more in the future
