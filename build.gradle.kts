@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("xyz.jpenilla.run-paper") version "2.1.0"
     `java-library`
     `maven-publish`
 }
@@ -59,6 +60,10 @@ tasks {
         dependencies {
             exclude("net.kyori")
         }
+    }
+
+    runServer {
+        minecraftVersion("1.19.4")
     }
 }
 
