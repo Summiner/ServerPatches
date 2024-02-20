@@ -17,8 +17,8 @@ public class Command implements CommandExecutor {
             sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Misc.no_permission")));
             return true;
         }
-        if(!strings[0].equalsIgnoreCase("reload")) {
-            sender.sendMessage(stringFormatter.formatColor("&7try again with the \"reload\" argument"));
+        if(strings.length==0||!strings[0].equalsIgnoreCase("reload")) {
+            sender.sendMessage(stringFormatter.formatColor("&7Please try with &d/spatches reload"));
             return true;
         }
         plugin.reloadConfig();

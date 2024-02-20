@@ -41,9 +41,6 @@ public class Manager {
             if(Main.config.getBoolean("DataCommandFilter.enabled")) {
                 listeners.put("exploits_crash_datacmd", new DatacommandCrashListener());
             }
-            if(Main.config.getBoolean("PacketLimiter.enabled")) {
-                listeners.put("rate_limit", new PacketLimiterListener());
-            }
             listeners.forEach((key,value) -> PacketEvents.getAPI().getEventManager().registerListener(value));
         });
     }

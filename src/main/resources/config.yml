@@ -2,23 +2,18 @@ Misc:
   kick: true
   no_permission: "&cYou do not have permission to run this command."
   config_reloaded: "&aSuccessfully reloaded the config file"
-PacketLimiter: # Global
-  enabled: false
-  check-interval: 15 # Time in ticks
-  max-rate: 350 # Time in ticks
-  kick-message: "§8[§dServerPatches§8] §fPassed packet limit"
 ClickEventExploit: #1.17.x & Below
   enabled: false
-  kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
+  kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
 LecternExploit: #1.18.2 & Below
   enabled: false
-  kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
+  kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
 ClickSwapExploit: #?.? - 1.20.2
   enabled: true
-  kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
+  kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
 DataCommandFilter: #?.? - 1.20.4
   enabled: true
-  kick-message: "§8[§dServerPatches§8] §fInternal Exception: Invalid Packet Recieved"
+  kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
 
 #SimplePhysics:
 #  enabled: true

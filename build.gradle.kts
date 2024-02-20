@@ -68,9 +68,9 @@ tasks {
 }
 
 group = "Server-Patches"
-version = "1.0.2-HOTFIX"
+version = "1.0.3"
 description = "ServerPatches"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_16
 
 publishing {
     publications.create<MavenPublication>("maven") {
