@@ -14,10 +14,10 @@ public class InvalidPacket {
     private static final Plugin plugin = Main.getPlugin(Main.class);
     private static final StringFormatter stringFormatter = new StringFormatter();
 
-    public static void kickFromAsync(User user, String reason, CrashType type) {
+    public static void kickFromAsync(Player player, String reason, CrashEvent event) {
         Bukkit.getScheduler().runTask(plugin, () -> {
-            Bukkit.getPlayer(user.getUUID()).kick(stringFormatter.formatColor(reason));
-            Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.LECTERN_CRASH));
+            player.kick(stringFormatter.formatColor(reason));
+            Bukkit.getPluginManager().callEvent(event);
         });
     }
 

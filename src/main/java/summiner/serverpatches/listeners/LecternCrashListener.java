@@ -30,7 +30,7 @@ public class LecternCrashListener extends SimplePacketListenerAbstract {
             }
             if(player.getOpenInventory().getType() == InventoryType.LECTERN) {
                 event.setCancelled(true);
-                InvalidPacket.kickFromAsync(user, Main.config.getString("LecternExploit.kick-message"), CrashType.LECTERN_CRASH);
+                InvalidPacket.kickFromAsync(player, Main.config.getString("LecternExploit.kick-message"), new CrashEvent(user, CrashType.LECTERN_CRASH));
             }
         }
     }

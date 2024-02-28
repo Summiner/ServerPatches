@@ -42,7 +42,7 @@ public class DatacommandCrashListener extends SimplePacketListenerAbstract {
             }
             if(!pass) {
                 event.setCancelled(true);
-                InvalidPacket.kickFromAsync(user, Main.config.getString("DataCommandFilter.kick-message"), CrashType.DATA_COMMAND_CRASH);
+                InvalidPacket.kickFromAsync(player, Main.config.getString("DataCommandFilter.kick-message"), new CrashEvent(user, CrashType.DATA_COMMAND_CRASH));
             }
         }
     }
