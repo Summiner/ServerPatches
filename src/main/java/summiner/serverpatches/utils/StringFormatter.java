@@ -1,23 +1,32 @@
 package summiner.serverpatches.utils;
 
 
-import net.md_5.bungee.api.ChatColor;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TextReplacementConfig;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.intellij.lang.annotations.RegExp;
 
 public class StringFormatter {
 
-    private final Pattern pattern = Pattern.compile("&#[a-fA-f0-9]{6}");
+    public TextComponent formatColor(String str) {
+        return LegacyComponentSerializer.legacyAmpersand().deserialize(str);
+    }
 
-    public String formatColor(String str) {
-        Matcher match = pattern.matcher(str);
-        while (match.find()) {
-            String color = str.substring(match.start(), match.end());
-            str = str.replace(color, ChatColor.of(color.replace("&", "")) + "");
-            match = pattern.matcher(str);
+    public Component replaceText(Component str, @RegExp String toReplace, String replaceWith) {
+        return str.replaceText(TextReplacementConfig.builder().match(toReplace).replacement(replaceWith).build());
+    }
+
+    public Component replaceText(Component str, @RegExp String toReplace, Component replaceWith) {
+        return str.replaceText(TextReplacementConfig.builder().match(toReplace).replacement(replaceWith).build());
+    }
+
+    public Integer parseInt(String s) {
+        try {
+            return Integer.parseInt(s);
+        } catch(NumberFormatException ignored) {
+            return 0;
         }
-        return ChatColor.translateAlternateColorCodes('&', str);
     }
 
 }

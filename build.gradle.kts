@@ -68,7 +68,7 @@ tasks {
 }
 
 group = "Server-Patches"
-version = "1.0.3"
+version = "1.0.4"
 description = "ServerPatches"
 java.sourceCompatibility = JavaVersion.VERSION_16
 

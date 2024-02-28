@@ -31,8 +31,7 @@ public class SwapCrashListener extends SimplePacketListenerAbstract {
             }
             if(button<0||button>40) {
                 event.setCancelled(true);
-                InvalidPacket.kickFromAsync(player, Main.config.getString("ClickSwapExploit.kick-message"));
-                Bukkit.getPluginManager().callEvent(new CrashEvent(user, CrashType.SWAP_CRASH));
+                InvalidPacket.kickFromAsync(user, Main.config.getString("ClickSwapExploit.kick-message"), CrashType.SWAP_CRASH);
             }
         }
     }
