@@ -12,7 +12,6 @@ This project simply fixes crashes and other important exploits for minecraft tha
 - None :3
   
 ## Credits:
-- [Pyr](https://github.com/Pyrbu) - Initial patch for the inventory click exploit
 - [Paper](https://github.com/PaperMC/) - Amazing community & Reference for multiple crash fixes
 - [PacketEvents](https://github.com/retrooper/packetevents) - Amazing library we use to handle packets
 - [Boosted-Yaml](https://github.com/dejvokep/boosted-yaml) - Cool library we use for configuration stuff
