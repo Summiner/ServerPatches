@@ -1,16 +1,17 @@
+config-version: 1
 Misc:
   kick: true
   no_permission: "&cYou do not have permission to run this command."
   config_reloaded: "&aSuccessfully reloaded the config file"
-ClickEventExploit: #1.17.x & Below
+ClickEventExploit:
   enabled: false
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
-LecternExploit: #1.18.2 & Below
+LecternExploit:
   enabled: false
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - LecternExploit"
-ClickSwapExploit: #?.? - 1.20.2
+ClickSwapExploit:
   enabled: true
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickSwapExploit"
-DataCommandFilter: #?.? - 1.20.4
+DataCommandFilter:
   enabled: true
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - DataCommandFilter"

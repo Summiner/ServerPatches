@@ -31,6 +31,7 @@ configurations {
 
 dependencies {
     shadow("org.bstats:bstats-bukkit:3.0.2")
+    shadow("dev.dejvokep:boosted-yaml:1.3")
     shadow("com.github.retrooper.packetevents:spigot:2.2.0") {
         exclude(group = "net.kyori")
     }
@@ -54,9 +55,10 @@ tasks {
         configurations = listOf(project.configurations.getByName("shadow"))
         archiveBaseName.set("Server-Patches")
         mergeServiceFiles()
-        relocate("org.bstats", "summiner.serverpatches.bstats")
-        relocate("com.github.retrooper", "summiner.serverpatches.retrooper.com")
-        relocate("io.github.retrooper", "summiner.serverpatches.retrooper.io")
+        relocate("dev.dejvokep.boostedyaml", "summiner.serverpatches.libs.boostedyaml")
+        relocate("org.bstats", "summiner.serverpatches.libs.bstats")
+        relocate("com.github.retrooper", "summiner.serverpatches.libs.retrooper.com")
+        relocate("io.github.retrooper", "summiner.serverpatches.libs.retrooper.io")
         dependencies {
             exclude("net.kyori")
         }

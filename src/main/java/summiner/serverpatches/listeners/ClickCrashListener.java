@@ -33,7 +33,7 @@ public class ClickCrashListener extends SimplePacketListenerAbstract {
             if (slot == -999 || slot == -1) return;
             if(slot < 0 || slot >= player.getOpenInventory().countSlots()) {
                 event.setCancelled(true);
-                InvalidPacket.kickFromAsync(player, Main.config.getString("ClickEventExploit.kick-message"), new CrashEvent(user, CrashType.CLICK_CRASH));
+                InvalidPacket.kickUser(user, Main.config.getString("ClickEventExploit.kick-message"), new CrashEvent(user, CrashType.CLICK_CRASH));
             }
         }
     }

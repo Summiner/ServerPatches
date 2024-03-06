@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+
 public class Command implements CommandExecutor {
 
     StringFormatter stringFormatter = new StringFormatter();
@@ -21,8 +23,11 @@ public class Command implements CommandExecutor {
             sender.sendMessage(stringFormatter.formatColor("&7Please try with &d/spatches reload"));
             return true;
         }
-        plugin.reloadConfig();
-        Main.config = plugin.getConfig();
+        try {
+            Main.config.reload();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Main.manager.reload();
         sender.sendMessage(stringFormatter.formatColor(Main.config.getString("Misc.config_reloaded")));
         return true;
