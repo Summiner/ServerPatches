@@ -1,5 +1,5 @@
 # ServerPatches
-This project simply fixes crashes and other important exploits for minecraft that PaperMC does not (typically for older versions)
+ServerPatches simply fixes crashes and other important exploits for older minecraft versions since paper doesn't have backwards compatibility. For 1.17-1.20+
 
 ## Features:
 - Fixes the lectern exploit - [EXAMPLE](https://www.youtube.com/watch?v=SvdO8ZSHQdo)
