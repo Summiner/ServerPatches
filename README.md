@@ -6,10 +6,6 @@ This project simply fixes crashes and other important exploits for minecraft tha
 - Fixes out of bounds inventory click packets - [EXAMPLE](https://www.youtube.com/watch?v=MIJR-nuwFi4)
 - Fixes out of bounds button integers for inventory slot swap packets - EXAMPLE N/A
 - Fixed data command exploits with invalid NBT, Caused by a [paper patch breaking something](https://github.com/PaperMC/Paper/blob/9e171ef8ff0a0ec57ebc75772fc9de578c987059/patches/server/0647-Check-requirement-before-suggesting-root-nodes.patch#L22)
-- Simple packet limiter built in
-
-## Requirements: 
-- None :3
   
 ## Credits:
 - [Paper](https://github.com/PaperMC/) - Amazing community & Reference for multiple crash fixes
