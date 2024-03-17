@@ -1,12 +1,16 @@
-package summiner.serverpatches.utils;
+package rs.jamie.serverpatches.utils;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerCommon;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
-import summiner.serverpatches.Main;
+import rs.jamie.serverpatches.Main;
+import rs.jamie.serverpatches.listeners.DatacommandCrashListener;
+import rs.jamie.serverpatches.listeners.SwapCrashListener;
+import rs.jamie.serverpatches.listeners.ClickCrashListener;
+import rs.jamie.serverpatches.listeners.LecternCrashListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
-import summiner.serverpatches.listeners.*;
+import rs.jamie.serverpatches.listeners.*;
 
 import java.util.HashMap;
 

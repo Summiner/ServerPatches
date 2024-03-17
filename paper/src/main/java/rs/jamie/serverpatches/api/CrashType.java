@@ -1,4 +1,4 @@
-package summiner.serverpatches.api;
+package rs.jamie.serverpatches.api;
 
 public enum CrashType {
     CLICK_CRASH,

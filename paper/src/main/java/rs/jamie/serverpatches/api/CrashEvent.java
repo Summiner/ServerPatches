@@ -1,4 +1,4 @@
-package summiner.serverpatches.api;
+package rs.jamie.serverpatches.api;
 
 import com.github.retrooper.packetevents.protocol.player.User;
 import org.bukkit.event.Event;

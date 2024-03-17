@@ -1,0 +1,10 @@
+name: ServerPatches
+api-version: 1.17
+main: rs.jamie.serverpatches.Main
+version: '${version}'
+authors: [Summiner]
+softdepend: [ViaVersion]
+commands:
+  spatches:
+    description: Adds the ability to reload ServerPatches config options, maybe more in the future
+    usage: /spatches reload

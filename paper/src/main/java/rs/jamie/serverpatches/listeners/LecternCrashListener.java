@@ -1,4 +1,4 @@
-package summiner.serverpatches.listeners;
+package rs.jamie.serverpatches.listeners;
 
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import com.github.retrooper.packetevents.event.SimplePacketListenerAbstract;
@@ -8,10 +8,10 @@ import com.github.retrooper.packetevents.protocol.player.User;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
-import summiner.serverpatches.Main;
-import summiner.serverpatches.api.CrashEvent;
-import summiner.serverpatches.api.CrashType;
-import summiner.serverpatches.utils.InvalidPacket;
+import rs.jamie.serverpatches.Main;
+import rs.jamie.serverpatches.api.CrashEvent;
+import rs.jamie.serverpatches.api.CrashType;
+import rs.jamie.serverpatches.utils.InvalidPacket;
 
 public class LecternCrashListener extends SimplePacketListenerAbstract {
 
