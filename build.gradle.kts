@@ -14,7 +14,6 @@ subprojects {
     version = "1.0.4"
     java.sourceCompatibility = JavaVersion.VERSION_16
 
-
     repositories {
         mavenLocal()
         maven {
@@ -23,7 +22,6 @@ subprojects {
     }
 
     tasks {
-
         val shadowJar = named<ShadowJar>("shadowJar") {
             configurations = listOf(project.configurations.getByName("shadow"))
             archiveFileName.set("ServerPatches.jar")
@@ -32,11 +30,9 @@ subprojects {
         build {
             dependsOn(shadowJar)
         }
-
     }
 
-    tasks.withType<JavaCompile>() {
+    tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
     }
-
 }
