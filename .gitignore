@@ -70,11 +70,6 @@ hs_err_pid*
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
-
 # Icon must end with two \r
 Icon
 
@@ -121,8 +116,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-target/
 
 pom.xml.tag
 pom.xml.releaseBackup
