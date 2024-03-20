@@ -1,18 +1,23 @@
-config-version: 1
-Misc:
+config-version: 2
+
+misc:
   kick: true
   version-check: true
-  no_permission: "&cYou do not have permission to run this command."
-  config_reloaded: "&aSuccessfully reloaded the config file"
-ClickEventExploit:
+  no-permission: "&cYou do not have permission to run this command."
+  config-reloaded: "&aSuccessfully reloaded the config file"
+
+click-event-exploit:
   enabled: false
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickEventExploit"
-LecternExploit:
+
+lectern-exploit:
   enabled: false
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - LecternExploit"
-ClickSwapExploit:
+
+click-swap-exploit:
   enabled: true
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickSwapExploit"
-DataCommandFilter:
+
+data-command-filter:
   enabled: true
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - DataCommandFilter"

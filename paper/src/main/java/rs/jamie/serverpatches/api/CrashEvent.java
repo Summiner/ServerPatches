@@ -6,9 +6,10 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class CrashEvent extends Event {
+    private static final HandlerList handlerList = new HandlerList();
+
     private final User user;
     private final CrashType type;
-    private static final HandlerList handlerList = new HandlerList();
 
     public CrashEvent(User user, CrashType type) {
         this.user = user;
