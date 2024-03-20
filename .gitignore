@@ -10,6 +10,10 @@ run/
 
 target/
 
+# fleet
+
+.fleet/
+
 # idea
 
 .idea/
