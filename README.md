@@ -15,3 +15,6 @@ ServerPatches simply fixes crashes and other important exploits for older minecr
 ## Notes:
 - If you know of any other exploits please open a [new issue](https://github.com/summiner/ServerPatches/issues/new) and give detail about the exploit
 - In the provided examples under Features we do not directly or indirectly endorse the people who have made the videos/posts, they are simply to demonstrate the exploit
+
+## BStats:
+![bstats data](https://bstats.org/signatures/bukkit/ServerPatches.svg)
