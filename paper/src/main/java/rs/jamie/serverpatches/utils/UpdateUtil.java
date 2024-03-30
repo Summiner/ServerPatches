@@ -23,7 +23,7 @@ public class UpdateUtil {
                 connection.setRequestProperty("Accept", "application/json");
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 JsonObject jsonObject = JsonParser.parseReader(bufferedReader).getAsJsonObject();
-                String tag = jsonObject.get("tag_name").getAsString().replaceAll("[V|\\-relas]" , "");
+                String tag = jsonObject.get("tag_name").getAsString().replaceAll("[V|\\-release]" , "");
                 bufferedReader.close();
                 connection.disconnect();
                 return checkVersion(plugin.getDescription().getVersion(), tag);

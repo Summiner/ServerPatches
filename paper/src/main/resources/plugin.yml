@@ -3,8 +3,6 @@ api-version: 1.17
 main: rs.jamie.serverpatches.Main
 version: '${version}'
 authors: [Summiner]
-
-# Required for PacketEvents
 softdepend:
   - ProtocolLib
   - ProtocolSupport
@@ -12,7 +10,6 @@ softdepend:
   - ViaBackwards
   - ViaRewind
   - Geyser-Spigot
-
 commands:
   spatches:
     description: Adds the ability to reload ServerPatches config options, maybe more in the future
