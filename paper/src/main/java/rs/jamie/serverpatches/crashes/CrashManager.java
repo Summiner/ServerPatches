@@ -27,6 +27,7 @@ public class CrashManager {
         PacketEvents.getAPI().getSettings()
                 .reEncodeByDefault(false)
                 .checkForUpdates(true)
+                .kickOnPacketException(true)
                 .bStats(true);
         PacketEvents.getAPI().load();
 
