@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -23,7 +24,7 @@ public class UpdateUtil {
                 connection.setRequestProperty("Accept", "application/json");
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 JsonObject jsonObject = JsonParser.parseReader(bufferedReader).getAsJsonObject();
-                String tag = jsonObject.get("tag_name").getAsString().replaceAll("[V|\\-release]" , "");
+                String tag = jsonObject.get("tag_name").getAsString().replaceAll("[V|\\-release|\\-HOTFIX]" , "");
                 bufferedReader.close();
                 connection.disconnect();
                 return checkVersion(plugin.getDescription().getVersion(), tag);

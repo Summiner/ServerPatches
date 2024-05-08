@@ -1,6 +1,6 @@
 name: ServerPatches
 api-version: 1.17
-main: rs.jamie.serverpatches.Main
+main: rs.jamie.serverpatches.ServerPatchesPlugin
 version: '${version}'
 authors: [Summiner]
 softdepend:

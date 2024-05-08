@@ -4,10 +4,7 @@ import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerCommon;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
-import rs.jamie.serverpatches.crashes.listeners.DataCommandCrashListener;
-import rs.jamie.serverpatches.crashes.listeners.SwapCrashListener;
-import rs.jamie.serverpatches.crashes.listeners.ClickCrashListener;
-import rs.jamie.serverpatches.crashes.listeners.LecternCrashListener;
+import rs.jamie.serverpatches.crashes.listeners.*;
 import org.bukkit.plugin.Plugin;
 import rs.jamie.serverpatches.utils.InvalidPacketKicker;
 

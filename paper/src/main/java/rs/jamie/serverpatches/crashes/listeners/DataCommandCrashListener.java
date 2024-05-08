@@ -7,7 +7,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.player.User;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientTabComplete;
 import dev.dejvokep.boostedyaml.YamlDocument;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import rs.jamie.serverpatches.api.CrashEvent;
 import rs.jamie.serverpatches.api.CrashType;
 import rs.jamie.serverpatches.utils.InvalidPacketKicker;
