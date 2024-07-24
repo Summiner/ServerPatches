@@ -16,5 +16,7 @@ ServerPatches simply fixes crashes and other important exploits for older minecr
 - If you know of any other exploits please open a [new issue](https://github.com/summiner/ServerPatches/issues/new) and give detail about the exploit
 - In the provided examples under Features we do not directly or indirectly endorse the people who have made the videos/posts, they are simply to demonstrate the exploit
 
+- !! We have no plans to write support for any version below 1.17 and support for 1.19 and below will be dropped on September 22, 2024. After this date the API version will be updated to 1.20 and no patches will be written for versions prior to this, in addition all fixes for any crash prior to 1.20 could be removed at any time. Private forks can be made for clients but you will be charged, email contact@jamie.rs if you are interested in this. Thank you for your continued support <3 !!
+
 ## BStats:
 ![bstats data](https://bstats.org/signatures/bukkit/ServerPatches.svg)
