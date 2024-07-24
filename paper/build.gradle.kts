@@ -16,7 +16,7 @@ configurations.named("shadow") {
 dependencies {
     shadow("org.bstats:bstats-bukkit:3.0.2")
     shadow("dev.dejvokep:boosted-yaml:1.3")
-    shadow("com.github.retrooper.packetevents:spigot:2.3.0") {
+    shadow("com.github.retrooper:packetevents-spigot:2.4.0") {
         exclude(group = "net.kyori")
     }
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
