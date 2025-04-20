@@ -8,7 +8,8 @@ ServerPatches simply fixes crashes and other important exploits for older minecr
 - Fixes the lectern exploit - [EXAMPLE](https://www.youtube.com/watch?v=SvdO8ZSHQdo)
 - Fixes out of bounds inventory click packets - [EXAMPLE](https://www.youtube.com/watch?v=MIJR-nuwFi4)
 - Fixes out of bounds button integers for inventory slot swap packets - EXAMPLE N/A
-- Fixed data command exploits with invalid NBT, Caused by a [paper patch breaking something](https://github.com/PaperMC/Paper/blob/9e171ef8ff0a0ec57ebc75772fc9de578c987059/patches/server/0647-Check-requirement-before-suggesting-root-nodes.patch#L22)
+- Fixed data command exploits with invalid NBT, Caused by a [Paper patch breaking something](https://github.com/PaperMC/Paper/blob/9e171ef8ff0a0ec57ebc75772fc9de578c987059/patches/server/0647-Check-requirement-before-suggesting-root-nodes.patch#L22)
+- Fixes a crash with the select bundle packet [Paper Patch](https://github.com/PaperMC/Paper/commit/a838a886dcbc93664283034a41673e802a6b3098)
   
 ## Credits:
 - [Paper](https://github.com/PaperMC/) - Amazing community & Reference for multiple crash fixes
