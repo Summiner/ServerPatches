@@ -25,7 +25,7 @@ public class BundleSelectCrashListener extends SimplePacketListenerAbstract {
     public void onPacketPlayReceive(PacketPlayReceiveEvent event) {
         if (event.getPacketType() != PacketType.Play.Client.SELECT_BUNDLE_ITEM) return;
 
-        User user = event.getPlayer();
+        User user = event.getUser();
         WrapperPlayClientSelectBundleItem packet = new WrapperPlayClientSelectBundleItem(event);
 
         if(packet.getSelectedItemIndex() >= -1) return;
