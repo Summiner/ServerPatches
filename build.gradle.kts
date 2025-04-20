@@ -11,7 +11,7 @@ subprojects {
         plugin("com.github.johnrengelman.shadow")
     }
 
-    version = "1.0.5"
+    version = "1.0.6"
     java.sourceCompatibility = JavaVersion.VERSION_16
 
     repositories {
