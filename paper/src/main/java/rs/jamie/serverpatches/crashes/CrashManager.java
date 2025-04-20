@@ -43,6 +43,7 @@ public class CrashManager {
             if (config.getBoolean("lectern-exploit.enabled")) listeners.put("exploits_crash_lectern", new LecternCrashListener(invalidPacketKicker, config));
             if (config.getBoolean("click-swap-exploit.enabled")) listeners.put("exploits_crash_swap", new SwapCrashListener(invalidPacketKicker, config));
             if (config.getBoolean("data-command-filter.enabled")) listeners.put("exploits_crash_datacmd", new DataCommandCrashListener(invalidPacketKicker, config));
+            if (config.getBoolean("bundle-select-exploit.enabled")) listeners.put("exploits_crash_bundle_select", new BundleSelectCrashListener(invalidPacketKicker, config));
             listeners.forEach((key,value) -> PacketEvents.getAPI().getEventManager().registerListener(value));
         });
     }

@@ -1,4 +1,4 @@
-config-version: 2
+config-version: 3
 
 misc:
   kick: true
@@ -17,6 +17,10 @@ lectern-exploit:
 click-swap-exploit:
   enabled: true
   kick-message: "§8[§dServerPatches§8] §fFailed packet filter - ClickSwapExploit"
+
+bundle-select-exploit:
+  enabled: true
+  kick-message: "§8[§dServerPatches§8] §fFailed packet filter - BundleSelectExploit"
 
 data-command-filter:
   enabled: true
