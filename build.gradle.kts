@@ -11,13 +11,19 @@ subprojects {
         plugin("com.github.johnrengelman.shadow")
     }
 
-    version = "1.0.6"
+    version = "1.1.0"
     java.sourceCompatibility = JavaVersion.VERSION_16
 
     repositories {
         mavenLocal()
         maven {
             url = uri("https://repo.maven.apache.org/maven2/")
+        }
+        maven {
+            url = uri("https://repo.papermc.io/repository/maven-public/")
+        }
+        maven {
+            url = uri("https://repo.codemc.io/repository/maven-releases/")
         }
     }
 

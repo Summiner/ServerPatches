@@ -2,15 +2,18 @@ package rs.jamie.serverpatches.crashes;
 
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerCommon;
+import com.velocitypowered.api.plugin.PluginContainer;
+import com.velocitypowered.api.proxy.ProxyServer;
 import dev.dejvokep.boostedyaml.YamlDocument;
-import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
-import org.bukkit.plugin.Plugin;
+import io.github.retrooper.packetevents.velocity.factory.VelocityPacketEventsBuilder;
+import org.slf4j.Logger;
 import rs.jamie.serverpatches.api.CrashEventDispatch;
 import rs.jamie.serverpatches.crashes.listeners.BundleSelectCrashListener;
 import rs.jamie.serverpatches.crashes.listeners.DataCommandCrashListener;
 import rs.jamie.serverpatches.crashes.listeners.SwapCrashListener;
 import rs.jamie.serverpatches.utils.InvalidPacketKicker;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
@@ -22,9 +25,9 @@ public class CrashManager {
 
     private final InvalidPacketKicker invalidPacketKicker;
 
-    public CrashManager(Plugin plugin, YamlDocument config) {
+    public CrashManager(YamlDocument config, ProxyServer server, PluginContainer plugin, Logger logger, Path dataDirectory) {
         this.config = config;
-        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(plugin));
+        PacketEvents.setAPI(VelocityPacketEventsBuilder.build(server, plugin, logger, dataDirectory));
         PacketEvents.getAPI().getSettings()
                 .reEncodeByDefault(false)
                 .checkForUpdates(false)
@@ -32,7 +35,7 @@ public class CrashManager {
                 .bStats(true);
         PacketEvents.getAPI().load();
 
-        invalidPacketKicker = new InvalidPacketKicker(plugin);
+        invalidPacketKicker = new InvalidPacketKicker();
     }
 
     public void unload() {
@@ -49,4 +52,5 @@ public class CrashManager {
             listeners.forEach((key,value) -> PacketEvents.getAPI().getEventManager().registerListener(value));
         });
     }
+
 }

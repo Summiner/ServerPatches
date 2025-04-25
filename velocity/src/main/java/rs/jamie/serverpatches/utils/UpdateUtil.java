@@ -2,18 +2,17 @@ package rs.jamie.serverpatches.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+import com.velocitypowered.api.plugin.PluginContainer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.logging.Level;
 
 public class UpdateUtil {
-    public static Boolean hasUpdate(Plugin plugin) {
+
+    public static Boolean hasUpdate(PluginContainer plugin) {
         try {
             URL url = new URL("https://api.github.com/repos/summiner/ServerPatches/releases/latest");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -24,9 +23,9 @@ public class UpdateUtil {
             String tag = jsonObject.get("tag_name").getAsString().replaceAll("[V|\\-release|\\-HOTFIX|\\-Release]" , "");
             bufferedReader.close();
             connection.disconnect();
-            return checkVersion(plugin.getDescription().getVersion(), tag);
+            return checkVersion(plugin.getDescription().getVersion().get(), tag);
         } catch (IOException e) {
-            Bukkit.getLogger().log(Level.WARNING, e.toString());
+            e.printStackTrace();
         }
         return null;
     }
@@ -35,7 +34,8 @@ public class UpdateUtil {
         if (current == null || compare == null) return false;
         int[] i1 = splitVersion(compare);
         int[] i2 = splitVersion(current);
-        return i1[0] > i2[0] || i1[1] > i2[1] || i1[2] > i2[2];
+        if(i2[0] > i1[0] || i2[1] > i1[1] || i2[2] > i1[2]) return false;
+        return (i1[0] > i2[0] || i1[1] > i2[1] || i1[2] > i2[2]);
     }
 
     private static int[] splitVersion(String version) {

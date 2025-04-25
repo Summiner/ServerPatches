@@ -5,8 +5,6 @@ ServerPatches simply fixes crashes and other important exploits for older minecr
 > We have no plans to write support for any version below 1.17 and support for 1.19 and below will be dropped on September 22, 2024. After this date the API version will be updated to 1.20 and no patches will be written for versions prior to this, in addition all fixes for any crash prior to 1.20 could be removed at any time. **Private forks can be made for clients but you will be charged, email contact@jamie.rs if you are interested in this**. Thank you for your continued support <3
 
 ## Features:
-- Fixes the lectern exploit - [EXAMPLE](https://www.youtube.com/watch?v=SvdO8ZSHQdo)
-- Fixes out of bounds inventory click packets - [EXAMPLE](https://www.youtube.com/watch?v=MIJR-nuwFi4)
 - Fixes out of bounds button integers for inventory slot swap packets - EXAMPLE N/A
 - Fixed data command exploits with invalid NBT, Caused by a [Paper patch breaking something](https://github.com/PaperMC/Paper/blob/9e171ef8ff0a0ec57ebc75772fc9de578c987059/patches/server/0647-Check-requirement-before-suggesting-root-nodes.patch#L22)
 - Fixes a crash with the select bundle packet [Paper Patch](https://github.com/PaperMC/Paper/commit/a838a886dcbc93664283034a41673e802a6b3098)

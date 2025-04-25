@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("xyz.jpenilla.run-velocity") version "2.3.1"
 }
 
 configurations.named("shadow") {
@@ -7,23 +7,25 @@ configurations.named("shadow") {
 }
 
 dependencies {
-    shadow("org.bstats:bstats-bukkit:3.0.2")
+    compileOnly("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
+    annotationProcessor("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
+    shadow("org.bstats:bstats-velocity:3.0.2")
     shadow("dev.dejvokep:boosted-yaml:1.3")
-    shadow("com.github.retrooper:packetevents-spigot:2.7.0")
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    shadow("com.github.retrooper:packetevents-velocity:2.7.0")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
 }
 
 tasks {
     processResources {
         inputs.property("version", project.version)
-        filesMatching("plugin.yml") {
+        filesMatching("ServerPatchesPlugin.java") {
             expand(getProperties())
             expand(mutableMapOf("version" to project.version))
         }
     }
 
     shadowJar {
-        archiveFileName.set("ServerPatches-Paper.jar")
+        archiveFileName.set("ServerPatches-Velocity.jar")
         relocate("dev.dejvokep.boostedyaml", "rs.jamie.serverpatches.libs.boostedyaml")
         relocate("org.bstats", "rs.jamie.serverpatches.libs.bstats")
         relocate("com.github.retrooper", "rs.jamie.serverpatches.libs.retrooper.com")
@@ -33,8 +35,8 @@ tasks {
         }
     }
 
-    runServer {
-        minecraftVersion("1.20.4")
+    runVelocity {
+        velocityVersion("3.4.0-SNAPSHOT")
     }
 }
 

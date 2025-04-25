@@ -34,8 +34,9 @@ public class ServerPatchesPlugin extends JavaPlugin {
         new Metrics(this, 20975);
 
         getCommand("spatches").setExecutor(new ServerPatchesCommand(config, crashManager));
-        Bukkit.getPluginManager().registerEvents(new VersionCheckListener(config, this), this);
-
+        if (config.getBoolean("misc.version-check")) {
+            Bukkit.getPluginManager().registerEvents(new VersionCheckListener(config, this), this);
+        }
         getLogger().info("Plugin finished loading (Paper)");
     }
 

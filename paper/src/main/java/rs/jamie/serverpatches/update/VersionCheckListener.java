@@ -10,27 +10,22 @@ import rs.jamie.serverpatches.utils.TextUtil;
 import rs.jamie.serverpatches.utils.UpdateUtil;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.StreamSupport;
 
 public class VersionCheckListener implements Listener {
     private final YamlDocument config;
-    private final CompletableFuture<Boolean> hasUpdate;
+    private Boolean hasUpdate;
 
     public VersionCheckListener(YamlDocument config, Plugin plugin) {
         this.config = config;
-        hasUpdate = UpdateUtil.hasUpdate(plugin);
+        CompletableFuture.runAsync(() -> {
+            this.hasUpdate = UpdateUtil.hasUpdate(plugin);
+        });
     }
 
     @EventHandler
     public void onPacketLoginReceive(PlayerJoinEvent event) {
-        if (!config.getBoolean("misc.version-check")) return;
         if (!event.getPlayer().hasPermission("serverpatches.updates")) return;
-
-        hasUpdate.thenAccept(hasUpdate -> {
-            if(hasUpdate) {
-                event.getPlayer().sendMessage(TextUtil.formatColor("&fA newer version of &dServerPatches &fis available. Download it from: ")
-                        .append(TextUtil.formatColor("&7https://github.com/Summiner/ServerPatches").clickEvent(ClickEvent.openUrl("https://github.com/Summiner/ServerPatches"))));
-            }
-        });
+        if(hasUpdate) {
+        }
     }
 }

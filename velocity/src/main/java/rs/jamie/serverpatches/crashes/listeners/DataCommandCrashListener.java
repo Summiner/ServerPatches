@@ -32,4 +32,5 @@ public class DataCommandCrashListener extends CrashListener {
             eventDispatch.dispatchEvent(new CrashEvent(user, CrashType.DATA_COMMAND_CRASH));
         }
     }
+
 }
