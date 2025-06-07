@@ -2,7 +2,7 @@
 ServerPatches simply fixes crashes and other important exploits for older minecraft versions since paper doesn't have backwards compatibility. For 1.19-1.21+
 
 > [!CAUTION]
-> The latest and all future downloads have been moved. Releases will exist on GitHub without a pre-built version. Thank you for understanding. [Download Here](https://modrinth.com/plugin/serverpatches)
+> The latest and all future downloads have been moved to modrinth. Releases will exist on GitHub without a pre-built version. Thank you for understanding. [Download Here](https://modrinth.com/plugin/serverpatches)
 
 ## Features:
 - Fixes out of bounds button integers for inventory slot swap packets - EXAMPLE N/A
