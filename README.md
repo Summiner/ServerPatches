@@ -1,8 +1,8 @@
 # ServerPatches
-ServerPatches simply fixes crashes and other important exploits for older minecraft versions since paper doesn't have backwards compatibility. For 1.17-1.20+
+ServerPatches simply fixes crashes and other important exploits for older minecraft versions since paper doesn't have backwards compatibility. For 1.19-1.21+
 
-> [!IMPORTANT]
-> We have no plans to write support for any version below 1.17 and support for 1.19 and below will be dropped on September 22, 2024. After this date the API version will be updated to 1.20 and no patches will be written for versions prior to this, in addition all fixes for any crash prior to 1.20 could be removed at any time. **Private forks can be made for clients but you will be charged, email contact@jamie.rs if you are interested in this**. Thank you for your continued support <3
+> [!CAUTION]
+> The latest and all future downloads have been moved. Releases will exist on GitHub without a pre-built version. Thank you for understanding. [Download Here](https://modrinth.com/plugin/serverpatches)
 
 ## Features:
 - Fixes out of bounds button integers for inventory slot swap packets - EXAMPLE N/A
